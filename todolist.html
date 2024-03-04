@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paul Holliday's To Do List</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-10">
+        <div class="max-w-2xl mx-auto">
+            <h1 class="text-3xl font-bold text-center mb-6">Paul Holliday's To Do List</h1>
+            <ul id="todoList" class="list-none">
+                <!-- Todo items will be rendered here -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const todoList = document.getElementById("todoList");
+            const todos = JSON.parse(localStorage.getItem("todos")) || [];
+
+            todos.forEach(function(todo) {
+                const todoItem = document.createElement("li");
+                todoItem.className = "bg-white p-2 shadow-sm mb-2";
+                todoItem.textContent = todo;
+                todoList.appendChild(todoItem);
+            });
+        });
+    </script>
+</body>
+</html>
+
